@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta name="Author" content="Doug Russell" />
+		<link type="text/css" rel="stylesheet" href="http://dl.dropbox.com/u/566464/BottleRocket/markdown.css" />
+		<meta name="Date" content="April 19, 2011" />
+		<meta name="Format" content="complete" />
+		<title>Intern Assignment</title>
+	</head>
+<body>
+<h1 id="jumpingoffpoint">Jumping off point</h1>
+
+<p>Before you write anything take a few minutes to gather some information. Skim through Apple&#8217;s docs, consider picking up a book, try to make a project and get it to do something. The slides and code from our boot camp will be available at <a href="http://www.bottlerocketapps.com/blog">Bottle Rocket Apps Blog</a> in the near future.</p>
+
+<p>Here are some resources we recommend:</p>
+
+<h3 id="apple">Apple</h3>
+
+<p><a href="http://developer.apple.com/videos/iphone/">Beginning Videos</a></p>
+
+<p><a href="http://developer.apple.com/library/ios/navigation/index.html?section=Resource+Types&amp;topic=Getting+Started">Beginning Docs</a></p>
+
+<p><a href="http://developer.apple.com/library/ios/referencelibrary/GettingStarted/Learning_Objective-C_A_Primer/_index.html#//apple_ref/doc/uid/TP40007594">Learning Objective-C</a></p>
+
+<p><a href="http://developer.apple.com/library/ios/#referencelibrary/GettingStarted/Creating_an_iPhone_App/_index.html%23//apple_ref/doc/uid/TP40007595">Creating an iPhone App</a></p>
+
+<h3 id="stanford">Stanford</h3>
+
+<p><a href="http://deimos3.apple.com/WebObjects/Core.woa/Browse/itunes.stanford.edu-dz.4842637426">Developing for iOS (Stanford)</a></p>
+
+<h3 id="books">Books</h3>
+
+<p><a href="http://www.amazon.com/iPhone-Programming-Ranch-Guide-Guides/dp/0321706242/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1304347880&amp;sr=8-1">Big Nerd Ranch Guide</a></p>
+
+<p><a href="http://www.amazon.com/Programming-Objective-C-2-0-Stephen-Kochan/dp/0321566157/ref=pd_sim_b_1">Programming in Objective-C 2.0</a></p>
+
+<h3 id="blogs">Blogs</h3>
+
+<p><a href="http://www.amazon.com/Cocoa-Design-Patterns-Erik-Buck/dp/0321535022/ref=pd_sim_b_3">Cocoa Design Patterns</a></p>
+
+<p><a href="http://cocoasamurai.blogspot.com/">Cocoa Samurai</a></p>
+
+<p><a href="http://cocoawithlove.com/">Cocoa With Love</a></p>
+
+<p><a href="http://www.cimgf.com/">CIMGF</a></p>
+
+<h1 id="tweetrocket">Flickr Rocket</h1>
+
+<p>Your assignment, should you choose to accept it, is to make an iPhone app that displays images from Flickr tagged with "rocket" using their search API.</p>
+
+<pre><code>1. Create a project using the "Single View" Application template. Call it FlickrRocket. This will create a project with a view controller hosting a view called RootViewController. RootViewController is where we'll be doing most of our work.
+2. Assign the provided loading screen and icon.
+3. Add a UIImageView to the main view.
+4. Download Flickr search results from the url: http://api.flickr.com/services/rest/?format=json&sort=random&method=flickr.photos.search&tags=rocket&tag_mode=all&api_key=0e2b6aaf8a6901c264acb91f151a3350&nojsoncallback=1 as NSData using NSURLConnection as an asynchronous process.
+5. Parse that data into an NSDictionary using NSJSONSerialization. The information about the photos you'll be displaying will be located in the "photo" key of the resulting dictionary.
+6. The URL location of an image on flickr is built with the following format: http://farm"FARM_VALUE".static.flickr.com/"SERVER_VALUE"/"PHOTO_ID_VALUE"_"PHOTO_SECRET_VALUE"_m.jpg.  The values are in each of the objects found in the "photo" array
+For example, for the entry: 
+{
+	"farm": 9,
+	"id":"8658536632",
+	"isfamily": 0,
+	"isfriend": 0,
+	"ispublic": 1,
+	"owner":"35067687@N04",
+	"secret": "afab53f070",
+	"server":"8111",
+	"title": "Antares Rocket Preparation (201304160006HQ)"
+}
+The URL would be http://farm9.static.flickr.com/8111/8658536632_afab53f070_m.jpg
+7. When the user swipes on the UIImageView, the image should move to the next image in the set of images returned by the API call wrapping back to the first image when the last image in the set is being displayed..
+</code></pre>
+
+<p><a href="http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/Tasks/UsingNSURLConnection.html%23//apple_ref/doc/uid/20001836-BAJEAIEE">URL Programming Guide</a></p>
+
+<p><a href="http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/Reference/Reference.html">NSDictionary Class Reference</a></p>
+
+<p><a href="http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSNumber_Class/Reference/Reference.html">NSNumber Class Reference</a></p>
+
+<p><a href="http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSJSONSerialization_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40010946">NSJSONSerialization Class Reference</a></p>
+
+<p><a href="http://developer.apple.com/library/ios/#DOCUMENTATION/UIKit/Reference/UISwipeGestureRecognizer_Class/Reference/Reference.html">UISwipeGestureRecognizer Class Reference</a></p>
+
+<p>Extra credit</p>
+
+<pre><code>1. Cross-fade between the images displayed in the UIImageView
+2. Thread your networking (most especially your image downloading)
+3. Progress indicator while download is happening.
+4. Make it a universal (iPhone/iPad) app
+5. Create your view controller's view without using xibs.
+</code></pre>
+
+<p><a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/UIActivityIndicatorView_Class/Reference/UIActivityIndicatorView.html">UIActivityIndicatorView Class Reference</a></p>
+
+<p><a href="http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Multithreading/CreatingThreads/CreatingThreads.html">Threading Programming Guide</a>
+(NSURLConnection on a secondary thread has to be synchronous, not asynchronous)</p>
+
+<h3 id="donot">DO NOT</h3>
+
+<pre><code>1. Use NSData, NSString, etc initWithContentsOfURL: methods. These are not the best or even really an ok way to do networking.
+2. Do any UI work on any thread other than the main thread.
+</code></pre>
+
+<p>Ask questions</p>
+
+<p>If you run into trouble or need some clarification feel free to contact one of us:</p>
+
+<p>david.palmer@bottlerocketapps.com</p>
+<p>kyle.mcgregor@bottlerocketapps.com</p>
+</body>
+</html>
